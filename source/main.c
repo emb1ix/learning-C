@@ -29,13 +29,12 @@ int main(void) {
 
         int y_backwards = 4-y; // Draws them "upside down", so that they are drawn from the bottom up
         amount_of_runs += 1;
-
-        sprintf(label, "button%d", (amount_of_runs));
+        sprintf(label, "%d", (amount_of_runs)); // Gives them their name
         GtkWidget *button = gtk_button_new_with_label(label);
+        gtk_widget_set_size_request(button, 180, 100);  // Width, Height in pixels
         gtk_grid_attach(GTK_GRID(grid), button, x, y_backwards, 1, 1);
     }
 }
-
 
     // Runs the GTK window
     gtk_widget_show_all(window);
