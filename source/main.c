@@ -2,12 +2,44 @@
 #include <gtk/gtk.h>
 
 int main(void) {
+    // Initializes the GTK window
     gtk_init(NULL, NULL);
-    GtkWidget *window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    gtk_window_set_title(GTK_WINDOW(window), "Hello, World!");
-    gtk_window_set_default_size(GTK_WINDOW(window), 1200, 600);
-    g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
-    gtk_widget_show(window);
+    GtkWidget *window = gtk_window_new(GTK_WINDOW_TOPLEVEL); // Creates the GTK window
+
+    gtk_window_set_default_size(GTK_WINDOW(window), 500, 700); // Sets the default size of the GTK window
+    g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL); // Closes the GTK window when the X button is clicked
+
+
+    // Creates the grid
+    GtkWidget *grid = gtk_grid_new();
+    gtk_container_add(GTK_CONTAINER(window), grid);
+
+    // Sets spacing for the grid
+    gtk_grid_set_row_spacing(GTK_GRID(grid), 5);
+    gtk_grid_set_column_spacing(GTK_GRID(grid), 5);
+
+
+    // Adds all the buttons
+    int amount_of_runs = 0;
+
+    for (int y = 1; y < 4; y++) {
+
+        for (int x = 1; x < 4; x++) {
+        char label[8];
+
+        int y_backwards = 4-y; // Draws them "upside down", so that they are drawn from the bottom up
+        amount_of_runs += 1;
+
+        sprintf(label, "button%d", (amount_of_runs));
+        GtkWidget *button = gtk_button_new_with_label(label);
+        gtk_grid_attach(GTK_GRID(grid), button, x, y_backwards, 1, 1);
+    }
+}
+
+
+    // Runs the GTK window
+    gtk_widget_show_all(window);
     gtk_main();
+
     return 0;
 }
