@@ -33,6 +33,10 @@ int main(void) {
         gtk_grid_attach(GTK_GRID(grid), button, x, y_backwards, 1, 1);
     }
     }
+    
+    GtkWidget *button = gtk_button_new_with_label("0");
+    gtk_widget_set_size_request(button, 180, 100);  // Width, Height in pixels
+    gtk_grid_attach(GTK_GRID(grid), button, 0, 4, 3, 1);
 
     // Creates the non-numerical buttons
     const char list_of_non_numerical_buttons[] = {'+', '-', '*'};
