@@ -20,12 +20,13 @@ int main(void) {
 
 
     // Adds all the numerical buttons (with the exception of 0) to the grid
+    int amount_of_y_rows = 6;
     int amount_of_runs = 0;
-    for (int y = 1; y < 4; y++) {
+    for (int y = 2; y < 5; y++) {
         for (int x = 0; x < 3; x++) {
         char label[8];
 
-        int y_backwards = 4-y; // Draws them "upside down", so that they are drawn from the bottom up
+        int y_backwards = amount_of_y_rows - y; // Draws them "upside down", so that they are drawn from the bottom up.
         amount_of_runs += 1;
         sprintf(label, "%d", (amount_of_runs)); // Gives them their name
         GtkWidget *button = gtk_button_new_with_label(label);
@@ -33,29 +34,31 @@ int main(void) {
         gtk_grid_attach(GTK_GRID(grid), button, x, y_backwards, 1, 1);
     }
     }
-    
+
     // Adds the 0 button to the grid
     GtkWidget *button = gtk_button_new_with_label("0");
-    gtk_widget_set_size_request(button, 180, 100);  // Width, Height in pixels
-    gtk_grid_attach(GTK_GRID(grid), button, 0, 4, 3, 1);
+    gtk_widget_set_size_request(button, 180, 100);
+    gtk_grid_attach(GTK_GRID(grid), button, 0, 5, 3, 1);
 
+    // Adds the answer textfield to the grid
+    GtkWidget *textfield = gtk_entry_new();
+    gtk_widget_set_size_request(textfield, 180, 100);
+    gtk_grid_attach(GTK_GRID(grid), textfield, 0, 0, 3, 1);
 
-
-    
     // Creates the non-numerical buttons
     const char list_of_non_numerical_buttons[] = {'+', '-', '*'};
     const int list_of_x_and_y_on_non_numerical_buttons[] = {8};
-
-    int x_non_numerical_buttons = 0;
-    int y_non_numerical_buttons = 0;
+    int x_non_numerical_buttons = 0; // Where on the grid the buttons should be placed.
+    int y_non_numerical_buttons = 1;
     for (int i = 0; i < 3; i++) {
         char label[2];
         sprintf(label, "%c", list_of_non_numerical_buttons[i]);
         GtkWidget *button = gtk_button_new_with_label(label);
-        gtk_widget_set_size_request(button, 180, 100);  // Width, Height in pixels
+        gtk_widget_set_size_request(button, 180, 100);
         gtk_grid_attach(GTK_GRID(grid), button, x_non_numerical_buttons, y_non_numerical_buttons, 1, 1);
         x_non_numerical_buttons += 1;
     }
+
 
     // Runs the GTK window
     gtk_widget_show_all(window);
