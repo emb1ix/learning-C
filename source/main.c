@@ -19,7 +19,7 @@ int main(void) {
     gtk_grid_set_column_spacing(GTK_GRID(grid), 5);
 
 
-    // Adds all the buttons
+    // Adds all the numerical buttons (with the exception of 0) to the grid
     int amount_of_runs = 0;
     for (int y = 1; y < 4; y++) {
         for (int x = 0; x < 3; x++) {
@@ -34,10 +34,14 @@ int main(void) {
     }
     }
     
+    // Adds the 0 button to the grid
     GtkWidget *button = gtk_button_new_with_label("0");
     gtk_widget_set_size_request(button, 180, 100);  // Width, Height in pixels
     gtk_grid_attach(GTK_GRID(grid), button, 0, 4, 3, 1);
 
+
+
+    
     // Creates the non-numerical buttons
     const char list_of_non_numerical_buttons[] = {'+', '-', '*'};
     const int list_of_x_and_y_on_non_numerical_buttons[] = {8};
