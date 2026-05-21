@@ -21,10 +21,8 @@ int main(void) {
 
     // Adds all the buttons
     int amount_of_runs = 0;
-
     for (int y = 1; y < 4; y++) {
-
-        for (int x = 1; x < 4; x++) {
+        for (int x = 0; x < 3; x++) {
         char label[8];
 
         int y_backwards = 4-y; // Draws them "upside down", so that they are drawn from the bottom up
@@ -34,11 +32,28 @@ int main(void) {
         gtk_widget_set_size_request(button, 180, 100);  // Width, Height in pixels
         gtk_grid_attach(GTK_GRID(grid), button, x, y_backwards, 1, 1);
     }
-}
+    }
+
+    // Creates the non-numerical buttons
+    const char list_of_non_numerical_buttons[] = {'+', '-', '*'};
+    const int list_of_x_and_y_on_non_numerical_buttons[] = {8};
+    int size_of_numerical_list = sizeof(list_of_non_numerical_buttons);
+    int x = 0;
+    int y = 0;
+    for (int i = 0; i < 3; i++) {
+        char label[2];
+        sprintf(label, "%c", list_of_non_numerical_buttons[i]);
+        GtkWidget *button = gtk_button_new_with_label(label);
+        gtk_widget_set_size_request(button, 180, 100);  // Width, Height in pixels
+        gtk_grid_attach(GTK_GRID(grid), button, x, y, 1, 1);
+        x += 1;
+    }
+
+
 
     // Runs the GTK window
     gtk_widget_show_all(window);
     gtk_main();
 
     return 0;
-}
+    }
