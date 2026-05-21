@@ -46,9 +46,9 @@ int main(void) {
     gtk_grid_attach(GTK_GRID(grid), button, 0, 5, 3, 1);
     number_buttons[0] = button; // Adds the 0 button to the array of numerical buttons
 
-
+    // Creates a textfield and adds it to the grid
     GtkWidget *textfield = gtk_entry_new();
-    gtk_widget_set_size_request(textfield, 180, 100);
+    gtk_widget_set_size_request(textfield, 180, 175);
     gtk_grid_attach(GTK_GRID(grid), textfield, 0, 0, 3, 1);
 
     // Creates the non-numerical buttons
