@@ -19,6 +19,9 @@ int main(void) {
     gtk_grid_set_column_spacing(GTK_GRID(grid), 5);
 
 
+    // Creates an array to store the numerical buttons
+    GtkWidget *number_buttons[10];
+
     // Adds all the numerical buttons (with the exception of 0) to the grid
     int amount_of_y_rows = 6;
     int amount_of_runs = 0;
@@ -27,11 +30,13 @@ int main(void) {
         char label[8];
 
         int y_backwards = amount_of_y_rows - y; // Draws them "upside down", so that they are drawn from the bottom up.
-        amount_of_runs += 1;
-        sprintf(label, "%d", (amount_of_runs)); // Gives them their name
+        amount_of_runs++;
+        sprintf(label, "%d", (amount_of_runs)); // Gives them their text label
         GtkWidget *button = gtk_button_new_with_label(label);
         gtk_widget_set_size_request(button, 180, 100);  // Width, Height in pixels
         gtk_grid_attach(GTK_GRID(grid), button, x, y_backwards, 1, 1);
+
+        number_buttons[amount_of_runs] = button; // Adds the buttons to the array of numerical buttons.
     }
     }
 
@@ -39,8 +44,9 @@ int main(void) {
     GtkWidget *button = gtk_button_new_with_label("0");
     gtk_widget_set_size_request(button, 180, 100);
     gtk_grid_attach(GTK_GRID(grid), button, 0, 5, 3, 1);
+    number_buttons[0] = button; // Adds the 0 button to the array of numerical buttons
 
-    // Adds the answer textfield to the grid
+
     GtkWidget *textfield = gtk_entry_new();
     gtk_widget_set_size_request(textfield, 180, 100);
     gtk_grid_attach(GTK_GRID(grid), textfield, 0, 0, 3, 1);
@@ -56,7 +62,7 @@ int main(void) {
         GtkWidget *button = gtk_button_new_with_label(label);
         gtk_widget_set_size_request(button, 180, 100);
         gtk_grid_attach(GTK_GRID(grid), button, x_non_numerical_buttons, y_non_numerical_buttons, 1, 1);
-        x_non_numerical_buttons += 1;
+        x_non_numerical_buttons++;
     }
 
 
