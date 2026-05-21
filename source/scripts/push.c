@@ -4,8 +4,8 @@
 
 int main(void) {
 
-    char commit_message[100];
-    char command[200];
+    char commit_message[512];
+    char command[1024];
 
     printf("Enter commit message: ");
 
