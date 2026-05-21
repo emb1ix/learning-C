@@ -37,19 +37,17 @@ int main(void) {
     // Creates the non-numerical buttons
     const char list_of_non_numerical_buttons[] = {'+', '-', '*'};
     const int list_of_x_and_y_on_non_numerical_buttons[] = {8};
-    int size_of_numerical_list = sizeof(list_of_non_numerical_buttons);
-    int x = 0;
-    int y = 0;
+
+    int x_non_numerical_buttons = 0;
+    int y_non_numerical_buttons = 0;
     for (int i = 0; i < 3; i++) {
         char label[2];
         sprintf(label, "%c", list_of_non_numerical_buttons[i]);
         GtkWidget *button = gtk_button_new_with_label(label);
         gtk_widget_set_size_request(button, 180, 100);  // Width, Height in pixels
-        gtk_grid_attach(GTK_GRID(grid), button, x, y, 1, 1);
-        x += 1;
+        gtk_grid_attach(GTK_GRID(grid), button, x_non_numerical_buttons, y_non_numerical_buttons, 1, 1);
+        x_non_numerical_buttons += 1;
     }
-
-
 
     // Runs the GTK window
     gtk_widget_show_all(window);
