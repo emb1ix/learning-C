@@ -55,8 +55,33 @@ void button_9_clicked(GtkWidget *widget, gpointer button_9_data) {
     numbers_to_calculate[number_in_the_list++] = 9;
 }
 
+// ------------------------------------------------------------------------------
+
+void button_C_clicked(GtkWidget *widget, gpointer button_C_data) {
+
+}
+
+void button_equals_clicked(GtkWidget *widget, gpointer button_equals_data) {
+}
+
+void button_multiply_clicked(GtkWidget *widget, gpointer button_multiply_data) {
+    gtk_entry_set_text(GTK_ENTRY(button_multiply_data), "*");
+}
+
+void button_plus_clicked(GtkWidget *widget, gpointer button_plus_data) {
+    gtk_entry_set_text(GTK_ENTRY(button_plus_data), "+");
+}
+
+void button_minus_clicked(GtkWidget *widget, gpointer button_minus_data) {
+    gtk_entry_set_text(GTK_ENTRY(button_minus_data), "-");
+}
+
+void button_divide_clicked(GtkWidget *widget, gpointer button_divide_data) {
+    gtk_entry_set_text(GTK_ENTRY(button_divide_data), "/");
+}
+
 // Makes an array for the functions of the numerical buttons.
-void (*buttons_clicked[10])(GtkWidget *, gpointer) = {
+void (*buttons_clicked[16])(GtkWidget *, gpointer) = {
     button_0_clicked,
     button_1_clicked,
     button_2_clicked,
@@ -66,7 +91,15 @@ void (*buttons_clicked[10])(GtkWidget *, gpointer) = {
     button_6_clicked,
     button_7_clicked,
     button_8_clicked,
-    button_9_clicked
+    button_9_clicked,
+// ---------------------------
+    button_C_clicked,
+    button_equals_clicked,
+    button_multiply_clicked,
+    button_plus_clicked,
+    button_minus_clicked,
+    button_divide_clicked
+
 };
 
 int main(void) {
@@ -112,7 +145,6 @@ int main(void) {
         gtk_widget_set_size_request(button, 180, 100);  // Width, Height in pixels
         gtk_grid_attach(GTK_GRID(grid), button, x, y_backwards, 1, 1);
         number_buttons[amount_of_runs] = button; // Adds the buttons to the array of numerical buttons.
-        sprintf(label_for_signal, "button_%d_clicked", amount_of_runs);
         g_signal_connect(number_buttons[amount_of_runs], "clicked", G_CALLBACK(buttons_clicked[amount_of_runs]), textfield);
     }
     }
@@ -126,7 +158,6 @@ int main(void) {
 
     // Creates the non-numerical buttons
     const char list_of_non_numerical_buttons[] = {'C', '=', '*', '+', '-', '/'};
-
     int x_non_numerical_buttons = 0; // Where on the grid the buttons should be placed.
     int y_non_numerical_buttons = 1;
     for (int i = 0; i < 6; i++) {
@@ -141,6 +172,7 @@ int main(void) {
         gtk_grid_attach(GTK_GRID(grid), button, x_non_numerical_buttons, y_non_numerical_buttons, 1, 1);
         x_non_numerical_buttons++;
         non_numerical_buttons[i] = button; // Adds the buttons to the array of non-numerical buttons.
+        g_signal_connect(non_numerical_buttons[i], "clicked", G_CALLBACK(buttons_clicked[i + 10]), textfield); // 10 is the amount of numerical buttons
     }
 
     // Runs the GTK window
