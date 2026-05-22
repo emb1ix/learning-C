@@ -58,7 +58,7 @@ void button_9_clicked(GtkWidget *widget, gpointer button_9_data) {
 // ------------------------------------------------------------------------------
 
 void button_C_clicked(GtkWidget *widget, gpointer button_C_data) {
-
+    gtk_entry_set_text(GTK_ENTRY(button_C_data), "");
 }
 
 void button_equals_clicked(GtkWidget *widget, gpointer button_equals_data) {
