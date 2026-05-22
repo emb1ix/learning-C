@@ -21,6 +21,7 @@ int main(void) {
 
     // Creates an array to store the numerical buttons
     GtkWidget *number_buttons[10];
+    GtkWidget *non_numerical_buttons[6];
 
     // Adds all the numerical buttons (with the exception of 0) to the grid
     int amount_of_y_rows = 7;
@@ -52,7 +53,8 @@ int main(void) {
     gtk_grid_attach(GTK_GRID(grid), textfield, 0, 0, 3, 1);
 
     // Creates the non-numerical buttons
-    const char list_of_non_numerical_buttons[] = {'+', '-', '*', 'C', '=', '/'};
+
+    const char list_of_non_numerical_buttons[] = {'C', '=', '*', '+', '-', '/'};
     const int list_of_x_and_y_on_non_numerical_buttons[] = {8};
     int x_non_numerical_buttons = 0; // Where on the grid the buttons should be placed.
     int y_non_numerical_buttons = 1;
@@ -67,6 +69,7 @@ int main(void) {
         gtk_widget_set_size_request(button, 180, 50);
         gtk_grid_attach(GTK_GRID(grid), button, x_non_numerical_buttons, y_non_numerical_buttons, 1, 1);
         x_non_numerical_buttons++;
+        non_numerical_buttons[i] = button; // Adds the buttons to the array of non-numerical buttons.
     }
 
 
