@@ -23,7 +23,7 @@ int main(void) {
     GtkWidget *number_buttons[10];
 
     // Adds all the numerical buttons (with the exception of 0) to the grid
-    int amount_of_y_rows = 6;
+    int amount_of_y_rows = 7;
     int amount_of_runs = 0;
     for (int y = 2; y < 5; y++) {
         for (int x = 0; x < 3; x++) {
@@ -43,7 +43,7 @@ int main(void) {
     // Adds the 0 button to the grid
     GtkWidget *button = gtk_button_new_with_label("0");
     gtk_widget_set_size_request(button, 180, 100);
-    gtk_grid_attach(GTK_GRID(grid), button, 0, 5, 3, 1);
+    gtk_grid_attach(GTK_GRID(grid), button, 0, 6, 3, 1);
     number_buttons[0] = button; // Adds the 0 button to the array of numerical buttons
 
     // Creates a textfield and adds it to the grid
@@ -52,15 +52,19 @@ int main(void) {
     gtk_grid_attach(GTK_GRID(grid), textfield, 0, 0, 3, 1);
 
     // Creates the non-numerical buttons
-    const char list_of_non_numerical_buttons[] = {'+', '-', '*'};
+    const char list_of_non_numerical_buttons[] = {'+', '-', '*', 'C', '=', '/'};
     const int list_of_x_and_y_on_non_numerical_buttons[] = {8};
     int x_non_numerical_buttons = 0; // Where on the grid the buttons should be placed.
     int y_non_numerical_buttons = 1;
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 6; i++) {
+        if (i == 3) { // If the button is the "C" button, it should be placed on the second row, not the first row.
+            y_non_numerical_buttons = 2;
+            x_non_numerical_buttons = 0;
+        }
         char label[2];
         sprintf(label, "%c", list_of_non_numerical_buttons[i]);
         GtkWidget *button = gtk_button_new_with_label(label);
-        gtk_widget_set_size_request(button, 180, 100);
+        gtk_widget_set_size_request(button, 180, 50);
         gtk_grid_attach(GTK_GRID(grid), button, x_non_numerical_buttons, y_non_numerical_buttons, 1, 1);
         x_non_numerical_buttons++;
     }
