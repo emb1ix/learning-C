@@ -1,8 +1,18 @@
 #include <stdio.h>
 #include <gtk/gtk.h>
 
+char name_for_new_list[23];
 int numbers_to_calculate[512]; // Stores the numbers that the user inputs
 int number_in_the_list = 0;
+int lists_for_calculation = 1;
+
+// Creates lists for calculation
+void create_lists_for_calculation() {
+        lists_for_calculation++;
+        sprintf(name_for_new_list, "numbers_to_calculate_%d", lists_for_calculation);
+        name_for_new_list[lists_for_calculation];
+}
+
 
 // Runs all the logic for button presses
 void button_0_clicked(GtkWidget *widget, gpointer button_0_data) {
@@ -70,6 +80,8 @@ void button_multiply_clicked(GtkWidget *widget, gpointer button_multiply_data) {
 
 void button_plus_clicked(GtkWidget *widget, gpointer button_plus_data) {
     gtk_entry_set_text(GTK_ENTRY(button_plus_data), "+");
+    create_lists_for_calculation();
+
 }
 
 void button_minus_clicked(GtkWidget *widget, gpointer button_minus_data) {
