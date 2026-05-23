@@ -4,7 +4,6 @@
 int numbers_to_calculate[512]; // Stores the numbers that the user inputs
 int number_in_the_list = 0;
 int lists_for_calculation = 1;
-}
 
 void plus() {
     
@@ -76,7 +75,6 @@ void button_multiply_clicked(GtkWidget *widget, gpointer button_multiply_data) {
 
 void button_plus_clicked(GtkWidget *widget, gpointer button_plus_data) {
     gtk_entry_set_text(GTK_ENTRY(button_plus_data), "+");
-    create_lists_for_calculation();
 
 }
 
