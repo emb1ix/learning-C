@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <gtk/gtk.h>
 
-long long numbers_to_calculate[512]; // Stores the numbers that the user inputs
+long long numbers_to_calculate[512]; // Stores the numbers, that the user inputs
+char operators_to_calculate[512]; // Stores the operators, that the user inputs
 int number_in_the_list = 0;
-int lists_for_calculation = 1;
+int operator_in_the_list = 0;
+
 long long answer = 0;
 
 void plus() {
@@ -88,36 +90,75 @@ void button_C_clicked(GtkWidget *widget, gpointer button_C_data) {
     for (int i = 0; i < 512; i++) {
         numbers_to_calculate[i] = 0;
     }
+    for (int i = 0; i < 512; i++) {
+        operators_to_calculate[i] = 0;
+    }
     answer = 0;
     number_in_the_list = 0;
+    operator_in_the_list = 0;
 }
 
 void button_equals_clicked(GtkWidget *widget, gpointer button_equals_data) {
-    for (int i = 0; i <= lists_for_calculation; i++) {
-        answer = answer + numbers_to_calculate[i];
+
+    answer = numbers_to_calculate[0];
+
+    for (int i = 0; i <= number_in_the_list; i++) {
+
+            if (operators_to_calculate[i-1] == '+') {
+                answer = answer + numbers_to_calculate[i];
+            }
+            else if (operators_to_calculate[i-1] == '-') {
+                answer = answer - numbers_to_calculate[i];
+            }
+            else if (operators_to_calculate[i-1] == '*') {
+                answer = answer * numbers_to_calculate[i];
+            }
+            else if (operators_to_calculate[i-1] == '/') {
+                answer = answer / numbers_to_calculate[i];
+            }
     }
-    char answer_str[20];
+    char answer_str[256];
     sprintf(answer_str, "%lld", answer);
     gtk_entry_set_text(GTK_ENTRY(button_equals_data), answer_str);
+
+
+
     answer = 0;
     number_in_the_list = 0;
+    operator_in_the_list = 0;
 }
 
 void button_multiply_clicked(GtkWidget *widget, gpointer button_multiply_data) {
     gtk_entry_set_text(GTK_ENTRY(button_multiply_data), "*");
+
+    operators_to_calculate[operator_in_the_list] = '*';
+    operator_in_the_list++;
+    number_in_the_list++;
 }
 
 void button_plus_clicked(GtkWidget *widget, gpointer button_plus_data) {
     gtk_entry_set_text(GTK_ENTRY(button_plus_data), "+");
+    operators_to_calculate[operator_in_the_list] = '+';
+    operator_in_the_list++;
+
     number_in_the_list++;
+
 }
 
 void button_minus_clicked(GtkWidget *widget, gpointer button_minus_data) {
     gtk_entry_set_text(GTK_ENTRY(button_minus_data), "-");
+
+    operators_to_calculate[operator_in_the_list] = '-';
+    operator_in_the_list++;
+    number_in_the_list++;
 }
 
 void button_divide_clicked(GtkWidget *widget, gpointer button_divide_data) {
     gtk_entry_set_text(GTK_ENTRY(button_divide_data), "/");
+
+    operators_to_calculate[operator_in_the_list] = '/';
+    operator_in_the_list++;
+    number_in_the_list++;
 }
 
 // Makes an array for the functions of the numerical buttons.
