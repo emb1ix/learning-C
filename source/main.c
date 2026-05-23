@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <gtk/gtk.h>
 
-int numbers_to_calculate[512]; // Stores the numbers that the user inputs
+long long numbers_to_calculate[512]; // Stores the numbers that the user inputs
 int number_in_the_list = 0;
 int lists_for_calculation = 1;
 
@@ -11,59 +11,82 @@ void plus() {
 
 // Runs all the logic for button presses
 void button_0_clicked(GtkWidget *widget, gpointer button_0_data) {
-    gtk_entry_set_text(GTK_ENTRY(button_0_data), "0");
+    char current_number[20];
     numbers_to_calculate[number_in_the_list] = numbers_to_calculate[number_in_the_list] * 10 + 0;
+    sprintf(current_number, "%lld", numbers_to_calculate[number_in_the_list]);
+    gtk_entry_set_text(GTK_ENTRY(button_0_data), current_number);
 }
 
 void button_1_clicked(GtkWidget *widget, gpointer button_1_data) {
-    gtk_entry_set_text(GTK_ENTRY(button_1_data), "1");
+    char current_number[20];
     numbers_to_calculate[number_in_the_list] = numbers_to_calculate[number_in_the_list] * 10 + 1;
+    sprintf(current_number, "%lld", numbers_to_calculate[number_in_the_list]);
+    gtk_entry_set_text(GTK_ENTRY(button_1_data), current_number);
 }
 
 void button_2_clicked(GtkWidget *widget, gpointer button_2_data) {
-    gtk_entry_set_text(GTK_ENTRY(button_2_data), "2");
+    char current_number[20];
     numbers_to_calculate[number_in_the_list] = numbers_to_calculate[number_in_the_list] * 10 + 2;
+    sprintf(current_number, "%lld", numbers_to_calculate[number_in_the_list]);
+    gtk_entry_set_text(GTK_ENTRY(button_2_data), current_number);
 }
 
 void button_3_clicked(GtkWidget *widget, gpointer button_3_data) {
-    gtk_entry_set_text(GTK_ENTRY(button_3_data), "3");
+    char current_number[20];
     numbers_to_calculate[number_in_the_list] = numbers_to_calculate[number_in_the_list] * 10 + 3;
+    sprintf(current_number, "%lld", numbers_to_calculate[number_in_the_list]);
+    gtk_entry_set_text(GTK_ENTRY(button_3_data), current_number);
 }
 
 void button_4_clicked(GtkWidget *widget, gpointer button_4_data) {
-    gtk_entry_set_text(GTK_ENTRY(button_4_data), "4");
+    char current_number[20];
     numbers_to_calculate[number_in_the_list] = numbers_to_calculate[number_in_the_list] * 10 + 4;
+    sprintf(current_number, "%lld", numbers_to_calculate[number_in_the_list]);
+    gtk_entry_set_text(GTK_ENTRY(button_4_data), current_number);
 }
 
 void button_5_clicked(GtkWidget *widget, gpointer button_5_data) {
-    gtk_entry_set_text(GTK_ENTRY(button_5_data), "5");
+    char current_number[20];
     numbers_to_calculate[number_in_the_list] = numbers_to_calculate[number_in_the_list] * 10 + 5;
+    sprintf(current_number, "%lld", numbers_to_calculate[number_in_the_list]);
+    gtk_entry_set_text(GTK_ENTRY(button_5_data), current_number);
 }
 
 void button_6_clicked(GtkWidget *widget, gpointer button_6_data) {
-    gtk_entry_set_text(GTK_ENTRY(button_6_data), "6");
+    char current_number[20];
     numbers_to_calculate[number_in_the_list] = numbers_to_calculate[number_in_the_list] * 10 + 6;
+    sprintf(current_number, "%lld", numbers_to_calculate[number_in_the_list]);
+    gtk_entry_set_text(GTK_ENTRY(button_6_data), current_number);
 }
 
 void button_7_clicked(GtkWidget *widget, gpointer button_7_data) {
-    gtk_entry_set_text(GTK_ENTRY(button_7_data), "7");
+    char current_number[20];
     numbers_to_calculate[number_in_the_list] = numbers_to_calculate[number_in_the_list] * 10 + 7;
+    sprintf(current_number, "%lld", numbers_to_calculate[number_in_the_list]);
+    gtk_entry_set_text(GTK_ENTRY(button_7_data), current_number);
 }
 
 void button_8_clicked(GtkWidget *widget, gpointer button_8_data) {
-    gtk_entry_set_text(GTK_ENTRY(button_8_data), "8");
+    char current_number[20];
     numbers_to_calculate[number_in_the_list] = numbers_to_calculate[number_in_the_list] * 10 + 8;
+    sprintf(current_number, "%lld", numbers_to_calculate[number_in_the_list]);
+    gtk_entry_set_text(GTK_ENTRY(button_8_data), current_number);
 }
 
 void button_9_clicked(GtkWidget *widget, gpointer button_9_data) {
-    gtk_entry_set_text(GTK_ENTRY(button_9_data), "9");
+    char current_number[20];
     numbers_to_calculate[number_in_the_list] = numbers_to_calculate[number_in_the_list] * 10 + 9;
+    sprintf(current_number, "%lld", numbers_to_calculate[number_in_the_list]);
+    gtk_entry_set_text(GTK_ENTRY(button_9_data), current_number);
 }
 
 // ------------------------------------------------------------------------------
 
 void button_C_clicked(GtkWidget *widget, gpointer button_C_data) {
     gtk_entry_set_text(GTK_ENTRY(button_C_data), "");
+    for (int i = 0; i < 512; i++) {
+        numbers_to_calculate[i] = 0;
+    }
 }
 
 void button_equals_clicked(GtkWidget *widget, gpointer button_equals_data) {
@@ -75,7 +98,7 @@ void button_multiply_clicked(GtkWidget *widget, gpointer button_multiply_data) {
 
 void button_plus_clicked(GtkWidget *widget, gpointer button_plus_data) {
     gtk_entry_set_text(GTK_ENTRY(button_plus_data), "+");
-
+    number_in_the_list++;
 }
 
 void button_minus_clicked(GtkWidget *widget, gpointer button_minus_data) {
