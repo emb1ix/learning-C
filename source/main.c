@@ -8,10 +8,6 @@ int operator_in_the_list = 0;
 
 long long answer = 0;
 
-void plus() {
-    
-}
-
 // Runs all the logic for button presses
 void button_0_clicked(GtkWidget *widget, gpointer button_0_data) {
     char current_number[20];
