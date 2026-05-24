@@ -121,9 +121,15 @@ void button_equals_clicked(GtkWidget *widget, gpointer button_equals_data) {
     sprintf(answer_str, "%lld", answer);
     gtk_entry_set_text(GTK_ENTRY(button_equals_data), answer_str);
 
+    for (int i = 0; i < 512; i++) {
+        numbers_to_calculate[i] = 0;
+    }
+    for (int i = 0; i < 512; i++) {
+        operators_to_calculate[i] = 0;
+    }
     numbers_to_calculate[0] = answer;
     answer = 0;
-    number_in_the_list = 1;
+    number_in_the_list = 0;
     operator_in_the_list = 0;
 }
 
