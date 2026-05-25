@@ -3,5 +3,6 @@
 #include <gtk/gtk.h>
 
 extern void (*buttons_clicked[16])(GtkWidget *, gpointer);
+extern void (render_buttons(GtkWidget *grid));
 #endif
 
