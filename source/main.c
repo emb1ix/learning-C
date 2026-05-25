@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <gtk/gtk.h>
+#include "window.h"
 
 long long numbers_to_calculate[512]; // Stores the numbers, that the user inputs
 char operators_to_calculate[512]; // Stores the operators, that the user inputs
@@ -185,17 +186,15 @@ void (*buttons_clicked[16])(GtkWidget *, gpointer) = {
 };
 
 int main(void) {
-    // Initializes the GTK window
-    gtk_init(NULL, NULL);
-    GtkWidget *window = gtk_window_new(GTK_WINDOW_TOPLEVEL); // Creates the GTK window
-    gtk_window_set_title(GTK_WINDOW(window), "Calculator"); // Sets the title of the GTK window
-    gtk_window_set_default_size(GTK_WINDOW(window), 500, 700); // Sets the default size of the GTK window
-    g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL); // Closes the GTK window when the X button is clicked
+    
 
+    GtkWidget *window = init_window();
 
     // Creates the grid
     GtkWidget *grid = gtk_grid_new();
     gtk_container_add(GTK_CONTAINER(window), grid);
+
+    
 
     // Sets spacing for the grid
     gtk_grid_set_row_spacing(GTK_GRID(grid), 5);
