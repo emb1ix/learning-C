@@ -5,14 +5,11 @@
 
 
 int main(void) {
-       
     GtkWidget *window = init_window();
 
     // Creates the grid
     GtkWidget *grid = gtk_grid_new();
     gtk_container_add(GTK_CONTAINER(window), grid);
-
-    
 
     // Sets spacing for the grid
     gtk_grid_set_row_spacing(GTK_GRID(grid), 5);
@@ -28,6 +25,8 @@ int main(void) {
     // Creates an array to store the numerical buttons
     GtkWidget *number_buttons[10];
     GtkWidget *non_numerical_buttons[7];
+
+
 
     // Adds all the numerical buttons (with the exception of 0) to the grid
     int amount_of_y_rows = 7;
