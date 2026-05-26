@@ -130,7 +130,6 @@ void button_equals_clicked(GtkWidget *widget, gpointer button_equals_data) {
 
 void button_multiply_clicked(GtkWidget *widget, gpointer button_multiply_data) {
     gtk_entry_set_text(GTK_ENTRY(button_multiply_data), "*");
-
     operators_to_calculate[operator_in_the_list] = '*';
     operator_in_the_list++;
     number_in_the_list++;
@@ -140,14 +139,12 @@ void button_plus_clicked(GtkWidget *widget, gpointer button_plus_data) {
     gtk_entry_set_text(GTK_ENTRY(button_plus_data), "+");
     operators_to_calculate[operator_in_the_list] = '+';
     operator_in_the_list++;
-
     number_in_the_list++;
 
 }
 
 void button_minus_clicked(GtkWidget *widget, gpointer button_minus_data) {
     gtk_entry_set_text(GTK_ENTRY(button_minus_data), "-");
-
     operators_to_calculate[operator_in_the_list] = '-';
     operator_in_the_list++;
     number_in_the_list++;
@@ -155,14 +152,20 @@ void button_minus_clicked(GtkWidget *widget, gpointer button_minus_data) {
 
 void button_divide_clicked(GtkWidget *widget, gpointer button_divide_data) {
     gtk_entry_set_text(GTK_ENTRY(button_divide_data), "/");
-
     operators_to_calculate[operator_in_the_list] = '/';
     operator_in_the_list++;
     number_in_the_list++;
 }
 
+void button_decimal_clicked(GtkWidget *widget, gpointer button_decimal_data) {
+    gtk_entry_set_text(GTK_ENTRY(button_decimal_data), ",");
+    operators_to_calculate[operator_in_the_list] = ',';
+    numbers_to_calculate[number_in_the_list] = numbers_to_calculate[number_in_the_list];
+}
+
+
 // Makes an array for the functions of the numerical buttons.
-void (*buttons_clicked[16])(GtkWidget *, gpointer) = {
+void (*buttons_clicked[20])(GtkWidget *, gpointer) = {
     button_0_clicked,
     button_1_clicked,
     button_2_clicked,
@@ -179,7 +182,8 @@ void (*buttons_clicked[16])(GtkWidget *, gpointer) = {
     button_multiply_clicked,
     button_plus_clicked,
     button_minus_clicked,
-    button_divide_clicked
+    button_divide_clicked,
+    button_decimal_clicked
 };
 
 void render_buttons(GtkWidget *grid) {
@@ -234,12 +238,13 @@ void render_buttons(GtkWidget *grid) {
         gtk_grid_attach(GTK_GRID(grid), button, x_non_numerical_buttons, y_non_numerical_buttons, 1, 1);
         x_non_numerical_buttons++;
         non_numerical_buttons[i] = button; // Adds the buttons to the array of non-numerical buttons.
-        g_signal_connect(non_numerical_buttons[i], "clicked", G_CALLBACK(buttons_clicked[i + 10]), textfield); // 10 is the amount of numerical buttons
+        g_signal_connect(non_numerical_buttons[i], "clicked", G_CALLBACK(buttons_clicked[i + 10]), textfield); // 10 is the amount of numerical buttons, therefore skips their places in the list.
     
       }
 
     // Creates "." button
-    button = gtk_button_new_with_label(",");
-    gtk_widget_set_size_request(button, 180, 100);
-    gtk_grid_attach(GTK_GRID(grid), button, 2, 6, 1, 1);
+    GtkWidget *decimal_button = gtk_button_new_with_label(",");
+    gtk_widget_set_size_request(decimal_button, 180, 100);
+    gtk_grid_attach(GTK_GRID(grid), decimal_button, 2, 6, 1, 1);
+    g_signal_connect(decimal_button, "clicked", G_CALLBACK(buttons_clicked[16]), textfield);
 }
