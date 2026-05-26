@@ -5,7 +5,7 @@ long long numbers_to_calculate[512];
 char operators_to_calculate[512];
 int number_in_the_list = 0.0;
 int operator_in_the_list = 0;
-long long answer = 0;
+double answer = 0.0;
 
 // Runs all the logic for button presses
 void button_0_clicked(GtkWidget *widget, gpointer button_0_data) {
@@ -96,7 +96,6 @@ void button_C_clicked(GtkWidget *widget, gpointer button_C_data) {
 void button_equals_clicked(GtkWidget *widget, gpointer button_equals_data) {
 
     answer = numbers_to_calculate[0];
-
     for (int i = 0; i <= number_in_the_list; i++) {
 
             if (operators_to_calculate[i-1] == '+') {
@@ -113,7 +112,7 @@ void button_equals_clicked(GtkWidget *widget, gpointer button_equals_data) {
             }
     }
     char answer_str[256];
-    sprintf(answer_str, "%lld", answer);
+    sprintf(answer_str, "%g", answer);
     gtk_entry_set_text(GTK_ENTRY(button_equals_data), answer_str);
 
     for (int i = 0; i < 512; i++) {
