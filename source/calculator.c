@@ -3,7 +3,7 @@
 
 long long numbers_to_calculate[512];
 char operators_to_calculate[512];
-int number_in_the_list = 0;
+int number_in_the_list = 0.0;
 int operator_in_the_list = 0;
 long long answer = 0;
 
@@ -214,7 +214,7 @@ void render_buttons(GtkWidget *grid) {
     // Adds the 0 button to the grid
     GtkWidget *button = gtk_button_new_with_label("0");
     gtk_widget_set_size_request(button, 180, 100);
-    gtk_grid_attach(GTK_GRID(grid), button, 0, 6, 3, 1);
+    gtk_grid_attach(GTK_GRID(grid), button, 0, 6, 2, 1);
     number_buttons[0] = button; // Adds the 0 button to the array of numerical buttons
     g_signal_connect(number_buttons[0], "clicked", G_CALLBACK(buttons_clicked[0]), textfield);
 
@@ -235,5 +235,11 @@ void render_buttons(GtkWidget *grid) {
         x_non_numerical_buttons++;
         non_numerical_buttons[i] = button; // Adds the buttons to the array of non-numerical buttons.
         g_signal_connect(non_numerical_buttons[i], "clicked", G_CALLBACK(buttons_clicked[i + 10]), textfield); // 10 is the amount of numerical buttons
-    }
+    
+      }
+
+    // Creates "." button
+    button = gtk_button_new_with_label(",");
+    gtk_widget_set_size_request(button, 180, 100);
+    gtk_grid_attach(GTK_GRID(grid), button, 2, 6, 1, 1);
 }
