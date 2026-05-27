@@ -6,88 +6,189 @@ double numbers_to_calculate[512];
 char operators_to_calculate[512];
 int number_in_the_list = 0.0;
 int operator_in_the_list = 0;
-double answer = 0.0;
 bool decimal_number = false;
+double answer = 0.0;
+float decimal_tracker = 1;
 
 // Runs all the logic for button presses
 void button_0_clicked(GtkWidget *widget, gpointer button_0_data) {
     char current_number[20];
-    float number_to_add = 0;
-    numbers_to_calculate[number_in_the_list] = numbers_to_calculate[number_in_the_list] * 10 + number_to_add;
+    double answer = 0.0;
+    if (decimal_number) {
+      decimal_tracker *= 10;
+      float number_to_add = 0.0f / decimal_tracker;
+      answer = numbers_to_calculate[number_in_the_list] + number_to_add;
+    }
+    else {
+      float number_to_add = 0;
+      answer = numbers_to_calculate[number_in_the_list] * 10 + number_to_add;
+  }
+    numbers_to_calculate[number_in_the_list] = answer;
     sprintf(current_number, "%g", numbers_to_calculate[number_in_the_list]);
     gtk_entry_set_text(GTK_ENTRY(button_0_data), current_number);
+
 }
 
 void button_1_clicked(GtkWidget *widget, gpointer button_1_data) {
     char current_number[20];
-    float number_to_add = 1;
-    numbers_to_calculate[number_in_the_list] = numbers_to_calculate[number_in_the_list] * 10 + number_to_add;
+    double answer = 0.0;
+    if (decimal_number) {
+      decimal_tracker *= 10;
+      float number_to_add = 1.0f / decimal_tracker;
+      answer = numbers_to_calculate[number_in_the_list] + number_to_add;
+    }
+    else {
+      float number_to_add = 1;
+      answer = numbers_to_calculate[number_in_the_list] * 10 + number_to_add;
+  }
+    numbers_to_calculate[number_in_the_list] = answer;
     sprintf(current_number, "%g", numbers_to_calculate[number_in_the_list]);
     gtk_entry_set_text(GTK_ENTRY(button_1_data), current_number);
+
 }
 
 void button_2_clicked(GtkWidget *widget, gpointer button_2_data) {
     char current_number[20];
-    float number_to_add = 2;
-    numbers_to_calculate[number_in_the_list] = numbers_to_calculate[number_in_the_list] * 10 + number_to_add;
+    double answer = 0.0;
+    if (decimal_number) {
+      decimal_tracker *= 10;
+      float number_to_add = 2.0f / decimal_tracker;
+      answer = numbers_to_calculate[number_in_the_list] + number_to_add;
+    }
+    else {
+      float number_to_add = 2;
+      answer = numbers_to_calculate[number_in_the_list] * 10 + number_to_add;
+  }
+    numbers_to_calculate[number_in_the_list] = answer;
     sprintf(current_number, "%g", numbers_to_calculate[number_in_the_list]);
     gtk_entry_set_text(GTK_ENTRY(button_2_data), current_number);
+
 }
 
 void button_3_clicked(GtkWidget *widget, gpointer button_3_data) {
     char current_number[20];
-    float number_to_add = 3;
-    numbers_to_calculate[number_in_the_list] = numbers_to_calculate[number_in_the_list] * 10 + number_to_add;
+    double answer = 0.0;
+    if (decimal_number) {
+      decimal_tracker *= 10;
+      float number_to_add = 3.0f / decimal_tracker;
+      answer = numbers_to_calculate[number_in_the_list] + number_to_add;
+    }
+    else {
+      float number_to_add = 3;
+      answer = numbers_to_calculate[number_in_the_list] * 10 + number_to_add;
+  }
+    numbers_to_calculate[number_in_the_list] = answer;
     sprintf(current_number, "%g", numbers_to_calculate[number_in_the_list]);
     gtk_entry_set_text(GTK_ENTRY(button_3_data), current_number);
+
 }
 
 void button_4_clicked(GtkWidget *widget, gpointer button_4_data) {
     char current_number[20];
-    float number_to_add = 4;
-    numbers_to_calculate[number_in_the_list] = numbers_to_calculate[number_in_the_list] * 10 + number_to_add;
+    double answer = 0.0;
+    if (decimal_number) {
+      decimal_tracker *= 10;
+      float number_to_add = 4.0f / decimal_tracker;
+      answer = numbers_to_calculate[number_in_the_list] + number_to_add;
+    }
+    else {
+      float number_to_add = 4;
+      answer = numbers_to_calculate[number_in_the_list] * 10 + number_to_add;
+  }
+    numbers_to_calculate[number_in_the_list] = answer;
     sprintf(current_number, "%g", numbers_to_calculate[number_in_the_list]);
     gtk_entry_set_text(GTK_ENTRY(button_4_data), current_number);
+
 }
 
 void button_5_clicked(GtkWidget *widget, gpointer button_5_data) {
     char current_number[20];
-    float number_to_add = 5;
-    numbers_to_calculate[number_in_the_list] = numbers_to_calculate[number_in_the_list] * 10 + number_to_add;
+    double answer = 0.0;
+    if (decimal_number) {
+      decimal_tracker *= 10;
+      float number_to_add = 5.0f / decimal_tracker;
+      answer = numbers_to_calculate[number_in_the_list] + number_to_add;
+    }
+    else {
+      float number_to_add = 5;
+      answer = numbers_to_calculate[number_in_the_list] * 10 + number_to_add;
+  }
+    numbers_to_calculate[number_in_the_list] = answer;
     sprintf(current_number, "%g", numbers_to_calculate[number_in_the_list]);
     gtk_entry_set_text(GTK_ENTRY(button_5_data), current_number);
+
 }
 
 void button_6_clicked(GtkWidget *widget, gpointer button_6_data) {
     char current_number[20];
-    float number_to_add = 6;
-    numbers_to_calculate[number_in_the_list] = numbers_to_calculate[number_in_the_list] * 10 + number_to_add;
+    double answer = 0.0;
+    if (decimal_number) {
+      decimal_tracker *= 10;
+      float number_to_add = 6.0f / decimal_tracker;
+      answer = numbers_to_calculate[number_in_the_list] + number_to_add;
+    }
+    else {
+      float number_to_add = 6;
+      answer = numbers_to_calculate[number_in_the_list] * 10 + number_to_add;
+  }
+    numbers_to_calculate[number_in_the_list] = answer;
     sprintf(current_number, "%g", numbers_to_calculate[number_in_the_list]);
     gtk_entry_set_text(GTK_ENTRY(button_6_data), current_number);
+
 }
 
 void button_7_clicked(GtkWidget *widget, gpointer button_7_data) {
     char current_number[20];
-    float number_to_add = 7;
-    numbers_to_calculate[number_in_the_list] = numbers_to_calculate[number_in_the_list] * 10 + number_to_add;
+    double answer = 0.0;
+    if (decimal_number) {
+      decimal_tracker *= 10;
+      float number_to_add = 7.0f / decimal_tracker;
+      answer = numbers_to_calculate[number_in_the_list] + number_to_add;
+    }
+    else {
+      float number_to_add = 7;
+      answer = numbers_to_calculate[number_in_the_list] * 10 + number_to_add;
+  }
+    numbers_to_calculate[number_in_the_list] = answer;
     sprintf(current_number, "%g", numbers_to_calculate[number_in_the_list]);
     gtk_entry_set_text(GTK_ENTRY(button_7_data), current_number);
+
 }
 
 void button_8_clicked(GtkWidget *widget, gpointer button_8_data) {
     char current_number[20];
-    float number_to_add = 8;
-    numbers_to_calculate[number_in_the_list] = numbers_to_calculate[number_in_the_list] * 10 + number_to_add;
+    double answer = 0.0;
+    if (decimal_number) {
+      decimal_tracker *= 10;
+      float number_to_add = 8.0f / decimal_tracker;
+      answer = numbers_to_calculate[number_in_the_list] + number_to_add;
+    }
+    else {
+      float number_to_add = 8;
+      answer = numbers_to_calculate[number_in_the_list] * 10 + number_to_add;
+  }
+    numbers_to_calculate[number_in_the_list] = answer;
     sprintf(current_number, "%g", numbers_to_calculate[number_in_the_list]);
     gtk_entry_set_text(GTK_ENTRY(button_8_data), current_number);
+
 }
 
 void button_9_clicked(GtkWidget *widget, gpointer button_9_data) {
     char current_number[20];
-    float number_to_add = 9;
-    numbers_to_calculate[number_in_the_list] = numbers_to_calculate[number_in_the_list] * 10 + number_to_add;
+    double answer = 0.0;
+    if (decimal_number) {
+      decimal_tracker *= 10;
+      float number_to_add = 9.0f / decimal_tracker;
+      answer = numbers_to_calculate[number_in_the_list] + number_to_add;
+    }
+    else {
+      float number_to_add = 9;
+      answer = numbers_to_calculate[number_in_the_list] * 10 + number_to_add;
+  }
+    numbers_to_calculate[number_in_the_list] = answer;
     sprintf(current_number, "%g", numbers_to_calculate[number_in_the_list]);
     gtk_entry_set_text(GTK_ENTRY(button_9_data), current_number);
+
 }
 
 // ------------------------------------------------------------------------------
@@ -103,6 +204,8 @@ void button_C_clicked(GtkWidget *widget, gpointer button_C_data) {
     answer = 0;
     number_in_the_list = 0;
     operator_in_the_list = 0;
+    decimal_number = false;
+    decimal_tracker = 1;
 }
 
 void button_equals_clicked(GtkWidget *widget, gpointer button_equals_data) {
@@ -137,6 +240,8 @@ void button_equals_clicked(GtkWidget *widget, gpointer button_equals_data) {
     answer = 0;
     number_in_the_list = 0;
     operator_in_the_list = 0;
+    decimal_number = false;
+    decimal_tracker = 1;
 }
 
 void button_multiply_clicked(GtkWidget *widget, gpointer button_multiply_data) {
@@ -144,6 +249,8 @@ void button_multiply_clicked(GtkWidget *widget, gpointer button_multiply_data) {
     operators_to_calculate[operator_in_the_list] = '*';
     operator_in_the_list++;
     number_in_the_list++;
+    decimal_number = false;
+    decimal_tracker = 1;
 }
 
 void button_plus_clicked(GtkWidget *widget, gpointer button_plus_data) {
@@ -151,7 +258,8 @@ void button_plus_clicked(GtkWidget *widget, gpointer button_plus_data) {
     operators_to_calculate[operator_in_the_list] = '+';
     operator_in_the_list++;
     number_in_the_list++;
-
+    decimal_number = false;
+    decimal_tracker = 1;
 }
 
 void button_minus_clicked(GtkWidget *widget, gpointer button_minus_data) {
@@ -159,6 +267,8 @@ void button_minus_clicked(GtkWidget *widget, gpointer button_minus_data) {
     operators_to_calculate[operator_in_the_list] = '-';
     operator_in_the_list++;
     number_in_the_list++;
+    decimal_number = false;
+    decimal_tracker = 1;
 }
 
 void button_divide_clicked(GtkWidget *widget, gpointer button_divide_data) {
@@ -166,11 +276,13 @@ void button_divide_clicked(GtkWidget *widget, gpointer button_divide_data) {
     operators_to_calculate[operator_in_the_list] = '/';
     operator_in_the_list++;
     number_in_the_list++;
+    decimal_number = false;
+    decimal_tracker = 1;
 }
 
 void button_decimal_clicked(GtkWidget *widget, gpointer button_decimal_data) {
+    decimal_number = true;
     gtk_entry_set_text(GTK_ENTRY(button_decimal_data), ",");
-    operators_to_calculate[operator_in_the_list] = ',';
     numbers_to_calculate[number_in_the_list] = numbers_to_calculate[number_in_the_list];
 }
 
