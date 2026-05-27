@@ -1,11 +1,13 @@
 #include "calculator.h"
 #include <gtk/gtk.h>
+#include <stdbool.h>
 
 double numbers_to_calculate[512];
 char operators_to_calculate[512];
 int number_in_the_list = 0.0;
 int operator_in_the_list = 0;
 double answer = 0.0;
+bool decimal_number = false;
 
 // Runs all the logic for button presses
 void button_0_clicked(GtkWidget *widget, gpointer button_0_data) {
